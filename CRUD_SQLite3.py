@@ -5,38 +5,6 @@ import sqlite3
 from PyQt5 import QtGui, QtWidgets, QtCore
 from PyQt5.QtWidgets import *
 
-# CLASSE REFERENTE A JANELA 3
-class Janela3(QMainWindow):
-    def __init__(self):
-        super().__init__()
-
-    # CARACTERÍSTICAS DA JANELA 3
-    def carregarJanela2(self):
-        self.setGeometry(1200, 100, 440, 500)
-        self.setWindowTitle("Janela 3")
-        self.setFixedSize(440, 500)
-
-    # CARACTERÍSTICAS DA PRIMEIRA LABEL
-    def primeiraLabel(self):
-        self.label1 = QtWidgets.QLabel(self)
-        self.label1.move(20, 0)
-        self.label1.resize(400, 60)
-        self.label1.setAlignment(QtCore.Qt.AlignCenter)
-        self.label1.setText("CRUD com SQLite3")
-        self.label1.setFont(QtGui.QFont("Arial", 14,
-                                            QtGui.QFont.Black))
-
-    # CARACTERÍSTICAS DA SEGUNDA LABEL
-    def segundaLabel(self):
-        self.label1 = QtWidgets.QLabel(self)
-        self.label1.move(20, 60)
-        self.label1.resize(200, 60)
-        self.label1.setAlignment(QtCore.Qt.AlignLeft)
-        self.label1.setText("Atualização de Dados")
-        self.label1.setFont(QtGui.QFont("Arial", 12,
-                                            QtGui.QFont.Black))
-
-
 # CLASSE REFERENTE A JANELA 2
 class Janela2(QMainWindow):
     def __init__(self):
