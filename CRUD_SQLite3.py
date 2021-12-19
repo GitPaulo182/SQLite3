@@ -40,7 +40,7 @@ class Janela2(QMainWindow):
         self.label1.move(20, 60)
         self.label1.resize(200, 60)
         self.label1.setAlignment(QtCore.Qt.AlignLeft)
-        self.label1.setText("Digite seus dados:")
+        self.label1.setText("Lista de Dados:")
         self.label1.setFont(QtGui.QFont("Arial", 12,
                                    QtGui.QFont.Black))
 
