@@ -10,20 +10,52 @@ class Janela2(QMainWindow):
     def __init__(self):
         super().__init__()
 
+        self.primeiroBotao()
+        self.segundoBotao()
+        self.primeiraLabel()
+        self.segundaLabel()
+
         self.carregarJanela2()
         self.listaGeral()
 
     # CARACTERÍSTICAS DA JANELA 2
     def carregarJanela2(self):
-        self.setGeometry(1200,100,440,500)
+        self.setGeometry(700,100,440,560)
         self.setWindowTitle("Janela 2")
-        self.setFixedSize(440,500)
+        self.setFixedSize(440,560)
 
-    # EVENTO DE FECHAMENTO DA JANELA 2 (RETORNA A JANELA PRINCIPAL)
-    def closeEvent(self, event):
-        self.retornaJanela1 = JanelaPrincipal()
-        self.retornaJanela1.show()
-        event.accept()
+    # CARACTERÍSTICAS DA PRIMEIRA LABEL
+    def primeiraLabel(self):
+        self.label1 = QtWidgets.QLabel(self)
+        self.label1.move(20, 0)
+        self.label1.resize(400, 60)
+        self.label1.setAlignment(QtCore.Qt.AlignCenter)
+        self.label1.setText("CRUD com SQLite3")
+        self.label1.setFont(QtGui.QFont("Arial", 14,
+                                   QtGui.QFont.Black))
+
+    # CARACTERÍSTICAS DA SEGUNDA LABEL
+    def segundaLabel(self):
+        self.label1 = QtWidgets.QLabel(self)
+        self.label1.move(20, 60)
+        self.label1.resize(200, 60)
+        self.label1.setAlignment(QtCore.Qt.AlignLeft)
+        self.label1.setText("Digite seus dados:")
+        self.label1.setFont(QtGui.QFont("Arial", 12,
+                                   QtGui.QFont.Black))
+
+    # CARACTERÍSTICAS DA PRIMEIR0 BOTÃO
+    def primeiroBotao(self):
+        self.botao1 = QPushButton("Excluir Dados", self)
+        self.botao1.move(320, 500)
+        self.botao1.resize(100, 30)
+        self.botao1.clicked.connect(self.apagarDados)
+
+    def segundoBotao(self):
+        self.botao2 = QPushButton("Atualizar Dados", self)
+        self.botao2.move(20, 500)
+        self.botao2.resize(100, 30)
+        self.botao2.clicked.connect(self.atualizarDados)
 
     # CARACTERÍSTICAS DA TABELA DE VISUALIZAÇÃO DE DADOS
     def listaGeral(self):
@@ -32,8 +64,30 @@ class Janela2(QMainWindow):
         self.lista.setHorizontalHeaderLabels(('Id', 'Nome', 'Idade', 'E-mail'))
         self.lista.setColumnWidth(0,120)
         self.lista.setColumnWidth(1,50)
-        self.lista.move(20, 50)
+        self.lista.move(20, 90)
         self.lista.resize(400, 400)
+
+    def atualizarDados(self):
+        print("ok")
+
+    def apagarDados(self):
+        banco = sqlite3.connect('banco_dados1.db')
+        cursor = banco.cursor()
+        linha = self.lista.currentRow()
+        self.lista.removeRow(linha)
+        cursor.execute("SELECT id FROM pessoas")
+        dados_lidos = cursor.fetchall()
+        valor_id = dados_lidos[linha][0]
+        cursor.execute("DELETE FROM pessoas WHERE id = " + str(valor_id))
+
+        banco.commit()
+        banco.close()
+
+    # EVENTO DE FECHAMENTO DA JANELA 2 (RETORNA A JANELA PRINCIPAL)
+    def closeEvent(self, event):
+        self.retornaJanela1 = JanelaPrincipal()
+        self.retornaJanela1.show()
+        event.accept()
 
     # CARREGA OS DADOS DO BANCO NA TABELA DE VISUALIZAÇÃO
     def carrgarDados(self):
@@ -78,12 +132,12 @@ class JanelaPrincipal (QMainWindow):
 
     # CARACTERÍSTICAS DA SEGUNDA LABEL
     def segundaLabel(self):
-        self.label1 = QtWidgets.QLabel(self)
-        self.label1.move(20, 60)
-        self.label1.resize(200, 60)
-        self.label1.setAlignment(QtCore.Qt.AlignLeft)
-        self.label1.setText("Digite seus dados:")
-        self.label1.setFont(QtGui.QFont("Arial", 12,
+        self.label2 = QtWidgets.QLabel(self)
+        self.label2.move(20, 60)
+        self.label2.resize(200, 60)
+        self.label2.setAlignment(QtCore.Qt.AlignLeft)
+        self.label2.setText("Digite seus dados:")
+        self.label2.setFont(QtGui.QFont("Arial", 12,
                                    QtGui.QFont.Black))
 
     # CARACTERÍSTICAS DA PRIMEIR0 BOTÃO
@@ -95,10 +149,10 @@ class JanelaPrincipal (QMainWindow):
 
     # CARACTERÍSTICAS DA SEGUNDO BOTÃO
     def segundoBotao(self):
-        self.botao1 = QPushButton("Visualizar Dados", self)
-        self.botao1.move(320, 180)
-        self.botao1.resize(100, 30)
-        self.botao1.clicked.connect(self.botao_Visualizar)
+        self.botao2 = QPushButton("Visualizar Dados", self)
+        self.botao2.move(320, 180)
+        self.botao2.resize(100, 30)
+        self.botao2.clicked.connect(self.botao_Visualizar)
 
     # CARACTERÍSTICAS DA PRIMEIRA LINHA
     def primeiraLinha(self):
