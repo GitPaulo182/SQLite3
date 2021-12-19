@@ -1,4 +1,5 @@
 
+#CRUD COM SQLITE3 E PYQT5
 import sys
 import sqlite3
 from PyQt5 import QtGui, QtWidgets, QtCore
