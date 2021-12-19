@@ -160,7 +160,7 @@ class JanelaPrincipal (QMainWindow):
         self.linha1.move(20, 90)
         self.linha1.resize(400, 20)
         self.linha1.setMaxLength(50)
-        self.linha1.setPlaceholderText("Digite seu nome")
+        self.linha1.setPlaceholderText("Digite o nome")
 
     # CARACTERÍSTICAS DA SEGUNDA LINHA
     def segundaLinha(self):
@@ -168,7 +168,7 @@ class JanelaPrincipal (QMainWindow):
         self.linha2.move(20, 120)
         self.linha2.resize(100, 20)
         self.linha2.setMaxLength(3)
-        self.linha2.setPlaceholderText("Digite sua idade")
+        self.linha2.setPlaceholderText("Digite a idade")
 
     # CARACTERÍSTICAS DA TERCEIRA LINHA
     def terceiraLinha(self):
@@ -176,7 +176,7 @@ class JanelaPrincipal (QMainWindow):
         self.linha3.move(20, 150)
         self.linha3.resize(400, 20)
         self.linha3.setMaxLength(50)
-        self.linha3.setPlaceholderText("Digite seu e-mail")
+        self.linha3.setPlaceholderText("Digite o e-mail")
 
     # CARACTERÍSTICAS DA JANELA 1
     def carregarJanela(self):
