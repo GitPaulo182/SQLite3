@@ -105,7 +105,7 @@ class Janela3 (QMainWindow):
 
         self.close()
 
-    # CARACTERÍSTICAS DA JANELA 1
+    # CARACTERÍSTICAS DA JANELA 3
     def carregarJanela(self):
         self.setGeometry(700,100,440,240)
         self.setWindowTitle("Janela 3")
@@ -146,12 +146,12 @@ class Janela2(QMainWindow):
 
     # CARACTERÍSTICAS DA SEGUNDA LABEL
     def segundaLabel(self):
-        self.label1 = QtWidgets.QLabel(self)
-        self.label1.move(20, 60)
-        self.label1.resize(200, 60)
-        self.label1.setAlignment(QtCore.Qt.AlignLeft)
-        self.label1.setText("Lista de Dados:")
-        self.label1.setFont(QtGui.QFont("Arial", 12,
+        self.label2 = QtWidgets.QLabel(self)
+        self.label2.move(20, 60)
+        self.label2.resize(200, 60)
+        self.label2.setAlignment(QtCore.Qt.AlignLeft)
+        self.label2.setText("Lista de Dados:")
+        self.label2.setFont(QtGui.QFont("Arial", 12,
                                    QtGui.QFont.Black))
 
     # CARACTERÍSTICAS DA PRIMEIR0 BOTÃO
@@ -184,7 +184,8 @@ class Janela2(QMainWindow):
         self.lista.setColumnWidth(1,50)
         self.lista.move(20, 90)
         self.lista.resize(400, 400)
-
+        
+    # FUNÇÃO PARA ATUALIZAÇÃO DE DADOS
     def atualizarDados(self):
         global numero_id
         linha = self.lista.currentRow()
@@ -206,7 +207,7 @@ class Janela2(QMainWindow):
         self.jan3.linha2a.setText(str(pessoa[0][2]))
         self.jan3.linha3a.setText(str(pessoa[0][3]))
 
-
+    # FUNÇÃO PARA APAGAR DADOS
     def apagarDados(self):
         banco = sqlite3.connect('banco_dados01.db')
         cursor = banco.cursor()
@@ -234,7 +235,8 @@ class Janela2(QMainWindow):
                 self.lista.setItem(i, j, QtWidgets.QTableWidgetItem(str(dados_lidos[i][j])))
 
         banco.close()
-
+        
+    # FUNÇÃO QUE CHAMA A JANELA PRINCIPAL
     def retornaJanelaPrincipal(self):
         self.tela1 = JanelaPrincipal()
         self.tela1.show()
