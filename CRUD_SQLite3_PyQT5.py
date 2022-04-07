@@ -355,7 +355,7 @@ class JanelaPrincipal (QMainWindow):
         except sqlite3.Error as erro:
             print(erro)
 
-    # EVENTO DO BOTÃO PARA VISUALIZAÇÃO DOS DADOS DO BANCO
+    #EVENTO DO BOTÃO PARA VISUALIZAÇÃO DOS DADOS DO BANCO
     def botao_Visualizar(self):
         self.jan2.carrgarDados()
         self.jan2.show()
